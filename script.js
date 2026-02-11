@@ -22,22 +22,24 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("JavaScript de EcoRaíces cargado correctamente")
 });
 
-const formulario = document.querySelector('form');
+const formulario = document.querySelector('form[name="contacto"]');
 
 if (formulario) {
-    formulario.addEventListener('submit', function(e){
-        const nombre = document.getElementById('nombre').value;
-        const email = document.getElementById('email').value;
-        const mensaje = document.getElementById('mensaje').value;
+    formulario.addEventListener('submit', function(e) {
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const mensaje = document.getElementById('mensaje').value.trim();
 
+        
         if (nombre === "" || email === "" || mensaje === "") {
-            e.preventDefault();
+            e.preventDefault(); 
             alert("Por favor, completa todos los campos antes de enviar.");
-        } else {
-            console.log("Formulario listo para enviar")
+            return false;
         }
-    })
-}
+        
+        
+        console.log("Formulario válido, enviando a Netlify...");
+    });
 
 const header = document.querySelector('header');
 
